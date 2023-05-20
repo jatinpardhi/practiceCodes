@@ -1,0 +1,21 @@
+#Print only oneSubsequece
+
+arr=[1,2,3,4,5]
+target=5
+l=len(arr)
+res=[]
+def printAllSubsequence(index,target,tempArray):
+    if target==0:
+        res.append(tempArray.copy())
+        return True
+    if index==l or target<0:
+        return
+    tempArray.append(arr[index])
+    if (printAllSubsequence(index+1,target-arr[index],tempArray)):
+        return True
+    tempArray.pop()
+    if (printAllSubsequence(index+1,target,tempArray)):
+        return True
+    return False
+printAllSubsequence(0,5,[])
+print(res)
